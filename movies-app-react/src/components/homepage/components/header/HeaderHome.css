@@ -1,0 +1,49 @@
+.container {
+  width: 80%;
+  height: 20rem;
+  margin: auto;
+  position: relative;
+}
+
+.container-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: url(../../../../assets/images/headerBackground.png);
+  mix-blend-mode: normal;
+  opacity: 0.8;
+  filter: blur(8px);
+}
+
+.prime_text {
+  color: #f65261;
+}
+
+.search-input {
+  background: rgba(50, 50, 50, 0.8);
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  border-radius: 4px;
+}
+
+.search-input::placeholder {
+  color: rgb(28, 28, 28);
+}
+
+.add_movie {
+  background: rgba(96, 96, 96, 0.68);
+  border-radius: 4px;
+  color: #f65261;
+}
+
+.search_btn {
+  background: #f65261;
+  border-radius: 4px;
+  color: white;
+}
+
+.movie-title {
+  color: white;
+  font: Montserrat;
+}
