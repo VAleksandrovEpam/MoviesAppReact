@@ -1,0 +1,16 @@
+.primary_color {
+    color: #F65261;
+    margin: 0;
+}
+
+.primary_color > span {
+    font-weight: 800;
+}
+
+footer {
+    width: 80%;
+    margin: auto;
+    background-color: #424242;
+    text-align: center;
+    padding: 1rem 0rem;
+}

@@ -1,0 +1,11 @@
+.error {
+    color: #F65261;
+    font-weight: 800;
+}
+
+section {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 5rem 0rem;
+}

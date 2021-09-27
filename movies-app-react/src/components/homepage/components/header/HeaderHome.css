@@ -24,8 +24,8 @@
   left: 1rem;
 }
 
-.prime_text_bold {
-  font-weight: bolder;
+.prime_text > span {
+  font-weight: 800;
 }
 
 .search-input::placeholder {

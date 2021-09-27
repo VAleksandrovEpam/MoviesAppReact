@@ -1,0 +1,34 @@
+.navbar_links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding: 1rem 0rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.navbar_links > li {
+    cursor: pointer;
+    display: inline;
+    font-size: 0.8rem;
+    color: #979797;
+    margin-left: 1.5rem;
+}
+
+.sort_movies_form {
+    float: right;
+    padding: 1.5rem 0rem;
+    margin-right: 1.5rem;
+}
+
+.sort_movies_form > label {
+    color: #979797;
+    padding-right: 1rem;
+    font-size: 0.8rem;
+}
+
+.sort_movies_form > select {
+    background: #232323;
+    border: none;
+    color: #979797;
+}
