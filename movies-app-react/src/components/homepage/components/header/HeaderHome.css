@@ -13,37 +13,77 @@
   background: url(../../../../assets/images/headerBackground.png);
   mix-blend-mode: normal;
   opacity: 0.8;
-  filter: blur(8px);
+  filter: blur(3px);
+  -webkit-filter: blur(8px);
 }
 
 .prime_text {
   color: #f65261;
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
 }
 
-.search-input {
-  background: rgba(50, 50, 50, 0.8);
-  mix-blend-mode: normal;
-  opacity: 0.7;
-  border-radius: 4px;
+.prime_text_bold {
+  font-weight: bolder;
 }
 
 .search-input::placeholder {
-  color: rgb(28, 28, 28);
+  color: grey;
 }
 
 .add_movie {
   background: rgba(96, 96, 96, 0.68);
   border-radius: 4px;
   color: #f65261;
+  width: 10rem;
+  text-align: center;
+  padding: 0.3rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  transition: 0.3s all ease-in-out;
+}
+
+.add_movie:hover {
+  padding: 0.3rem 1rem;
+  transition: 0.3s all ease-in-out;
+}
+
+.search-input {
+  background: rgba(50, 50, 50);
+  color: white;
+  mix-blend-mode: overlay;
+  opacity: 1;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 60%;
+  margin-right: 0.5rem;
 }
 
 .search_btn {
   background: #f65261;
   border-radius: 4px;
   color: white;
+  width: 10rem;
+  padding: 0.5rem;
+}
+
+.search_movies {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 11rem;
 }
 
 .movie-title {
   color: white;
-  font: Montserrat;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 2rem;
+  position: absolute;
+  top: 4.5rem;
+  left: 6rem;
+  z-index: 4;
 }
