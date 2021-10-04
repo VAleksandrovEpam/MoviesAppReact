@@ -5,7 +5,12 @@ function Movie(props) {
     return (
         <>
             <section className="movie_section">
-                <img onClick={props.toggleDeleteMovieModal} className="background_image" src={`./${props.cover}.png`} alt='Cover'/>
+                <section className="container_img">
+                    <div className="dots"></div>
+                    <img  className="background_image" src={`./${props.cover}.png`} alt='Cover'/>
+                        <button onClick={() => props.toggleEditMovieModal(props)} className="edit_btn">EDIT MOVIE</button>
+                        <button onClick={props.toggleDeleteMovieModal} className="delete_btn">DELETE MOVIE</button>
+                </section>
                 <p className="title">{props.title}</p>
                 <div className="year">{props.year}</div>
                 <p className="genre">{props.genre}</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../../../../styles/styles.css";
-import "./AddMovie.css";
+import "../AddEditMovie.css";
 
 class AddMovie extends React.PureComponent {
     toggleAddMovieModal = () => {

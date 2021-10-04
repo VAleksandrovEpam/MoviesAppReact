@@ -10,6 +10,10 @@ function MovieList(props) {
                 title={movie.title}
                 genre={movie.genre}
                 year={movie.year}
+                rating={movie.rating}
+                runtime={movie.runtime}
+                description={movie.description}
+                toggleEditMovieModal={props.toggleEditMovieModal}
                 toggleDeleteMovieModal={props.toggleDeleteMovieModal}>
                 </Movie>
             ))}
