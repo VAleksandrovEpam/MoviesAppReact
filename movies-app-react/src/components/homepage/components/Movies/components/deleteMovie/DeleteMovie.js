@@ -13,8 +13,8 @@ class DeleteMovie extends React.Component {
                 <aside className="addDeleteModal">
                     <h1> DELETE MOVIE </h1>
                     <p>Are you sure you want to delete this movie?</p>
-                    <button className="confirm_btn">CONFIRM</button>
-                    <button className="close_btn" onClick={this.toggleAddMovieModal}>&times;</button>
+                    <button className="submit_btn">CONFIRM</button>
+                    <button className="close_btn" onClick={this.toggleDeleteMovieModal}>&times;</button>
                 </aside>
             </>
         )

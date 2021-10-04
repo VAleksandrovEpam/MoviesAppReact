@@ -9,7 +9,8 @@ function MovieList(props) {
                 <Movie key={index} cover={movie.cover}
                 title={movie.title}
                 genre={movie.genre}
-                year={movie.year}>
+                year={movie.year}
+                toggleDeleteMovieModal={props.toggleDeleteMovieModal}>
                 </Movie>
             ))}
         </>

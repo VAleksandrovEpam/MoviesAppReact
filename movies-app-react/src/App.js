@@ -44,11 +44,12 @@ class App extends Component {
     }
 
   render() {
+    const { movies, genres} = this.state;
     return (
       <>
         <HomeHeader toggleAddMovieModal={this.toggleAddMovieModal}></HomeHeader>
         <ErrorBoundary>
-          <Movies  genres={this.props.genres} movies={this.props.movies} toggleDeleteMovieModal={this.toggleDeleteMovieModal} ></Movies>
+          <Movies movies={movies}  genres={genres} toggleDeleteMovieModal={this.toggleDeleteMovieModal} ></Movies>
         </ErrorBoundary>
         {this.state.showingAddMovieModal && <AddMovie toggleAddMovieModal={this.toggleAddMovieModal}></AddMovie>}
         {this.state.showingDeleteMovieModal && <DeleteMovie toggleDeleteMovieModal={this.toggleDeleteMovieModal}></DeleteMovie>}
