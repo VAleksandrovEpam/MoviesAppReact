@@ -33,6 +33,7 @@
 }
 
 .add_movie {
+  cursor: pointer;
   background: rgba(96, 96, 96, 0.68);
   border-radius: 4px;
   color: #f65261;
