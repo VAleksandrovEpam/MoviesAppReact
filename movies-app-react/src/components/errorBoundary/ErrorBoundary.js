@@ -8,7 +8,7 @@ function ErrorBoundary(props) {
         </h2>
         </section>
     )
-    let isEverythingOk = false;
+    let isEverythingOk = true;
 
     return <>{isEverythingOk ? props.children : <ErrorText />}</>
 
