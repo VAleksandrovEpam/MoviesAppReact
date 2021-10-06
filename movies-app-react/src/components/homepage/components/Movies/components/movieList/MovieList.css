@@ -6,3 +6,6 @@
     color: #979797;
     margin-right: 0.2rem;
 }
+.movie_list_container {
+    display: flex;
+}
