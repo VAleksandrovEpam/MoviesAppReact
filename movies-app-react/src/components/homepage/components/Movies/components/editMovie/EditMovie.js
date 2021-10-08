@@ -2,12 +2,11 @@ import React from "react";
 import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
 
-class EditMovie extends React.PureComponent {
-  toggleEditMovieModal = (e) => {
-        this.props.toggleEditMovieModal();
+const EditMovie = props => {
+   const toggleEditMovieModal = (e) => {
+        props.toggleEditMovieModal();
     }
 
-  render() {
     return (
       <>
         <aside className="addMovieModal">
@@ -92,6 +91,5 @@ class EditMovie extends React.PureComponent {
       </>
     );
   }
-}
 
 export default EditMovie;

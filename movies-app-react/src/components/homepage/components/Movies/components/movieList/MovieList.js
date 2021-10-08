@@ -1,7 +1,7 @@
 import './MovieList.css';
 import Movie from './components/Movie';
 
-function MovieList(props) {
+const MovieList = (props) => {
     return (
         <>
             <h5 className="movies_count"><span className="counter">{props.movies.length}</span> movies found</h5>
