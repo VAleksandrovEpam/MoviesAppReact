@@ -54,6 +54,7 @@ const EditMovie = props => {
             <fieldset>
               <label htmlFor="movie_genre">GENRE</label>
               <select
+                defaultValue={props.choosenMovie.genre}
                 className="large_input"
                 name="movie_genre"
                 id="movie_genre"

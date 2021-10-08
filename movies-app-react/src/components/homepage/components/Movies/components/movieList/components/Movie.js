@@ -7,16 +7,17 @@ function Movie(props) {
         <section className="container_img">
           <div className="dots"></div>
           <img
+            onClick={() => props.selectedMovie(props)}
             className="background_image"
             src={`./${props.cover}.png`}
             alt="Cover"
           />
-          <button
-            onClick={() => props.selectedMovie(props)}
+          {/* <button
+            onClick={() => props.selectedMovie(props), props.toggleDeleteMovieModal}
             className="edit_btn"
           >
             EDIT MOVIE
-          </button>
+          </button> */}
           <button onClick={props.toggleDeleteMovieModal} className="delete_btn">
             DELETE MOVIE
           </button>

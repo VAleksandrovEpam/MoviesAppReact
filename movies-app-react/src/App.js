@@ -12,7 +12,7 @@ const App = (props) => {
   const [showingAddMovieModal, toogleAddModal] = useState(false);
   const [showingEditMovieModal, toogleEditModal] = useState(false);
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);
-  const [choosenMovie, setChoosenMovie] = useState(null);
+  const [choosenMovie, setChoosenMovie] = useState({});
 
   const [genres, setGenres] = useState([
     "ALL",
@@ -92,15 +92,15 @@ const App = (props) => {
   };
 
   const selectedMovie = (event) => {
-    console.log(event);
-    console.log("this is the choosen movie");
+    // console.log(event);
+    // console.log("this is the choosen movie");
     setChoosenMovie(event);
-    toogleEditModal(true)
+    // toogleEditModal(true)
   };
 
   return (
     <>
-      <HomeHeader toggleAddMovieModal={addHandler}></HomeHeader>
+      <HomeHeader toggleAddMovieModal={addHandler} choosenMovie = {choosenMovie}></HomeHeader>
       <ErrorBoundary>
         <Movies
           movies={movies}
