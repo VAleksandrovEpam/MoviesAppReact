@@ -30,7 +30,7 @@ function HomeHeader(props) {
 
   let movieDetaisContent = (
     <>
-      <section className="movie_details">
+      <div className="movie_details">
         <h4 className="prime_text">
           <span>netflix</span>roulette
         </h4>
@@ -39,19 +39,19 @@ function HomeHeader(props) {
           src={`./${props.choosenMovie.cover}.png`}
           alt="cover"
         ></img>
-        <h1>{props.choosenMovie.title}</h1>
+        <div className="title_rating">
+             <h1>{props.choosenMovie.title}</h1>
+             <h2>{props.choosenMovie.rating}</h2>
+        </div>
         <h6>{props.choosenMovie.genre}</h6>
         <div className="year_duration_wrapper">
           <h4>{props.choosenMovie.year}</h4>
           <h4 className="runtime">{props.choosenMovie.runtime}</h4>
+          <p>{props.choosenMovie.description}</p>
         </div>
-        <h2>{props.choosenMovie.rating}</h2>
-        <p>{props.choosenMovie.description}</p>
-        <div className="searchIcon">
-          <img src={"./Oval.png"} alt="searchIcon"></img>
-          <img src={"./Line_2.png"} alt="searchIcon"></img>
-        </div>
-      </section>
+          <img onClick={() => props.selectedMovie({})} className="search_oval" src={"./Oval.png"} alt="searchIcon"></img>
+          <img className="search_line" src={"./Line_2.png"} alt="searchIcon"></img>
+      </div>
     </>
   );
 

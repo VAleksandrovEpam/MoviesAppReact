@@ -100,7 +100,7 @@ const App = (props) => {
 
   return (
     <>
-      <HomeHeader toggleAddMovieModal={addHandler} choosenMovie = {choosenMovie}></HomeHeader>
+      <HomeHeader selectedMovie = {selectedMovie} toggleAddMovieModal={addHandler} choosenMovie = {choosenMovie}></HomeHeader>
       <ErrorBoundary>
         <Movies
           movies={movies}
