@@ -19,7 +19,7 @@ const EditMovie = props => {
                 className="large_input"
                 type="text"
                 placeholder="Select Title"
-                value={this.props.choosenMovie.title}
+                value={props.choosenMovie.title}
               />
               <label htmlFor="movie_date">RELEASE DATE</label>
               <input
@@ -27,7 +27,7 @@ const EditMovie = props => {
                 className="small_input"
                 type="date"
                 placeholder="Select Date"
-                value={this.props.choosenMovie.year}
+                value={props.choosenMovie.year}
               />
             </fieldset>
 
@@ -38,7 +38,7 @@ const EditMovie = props => {
                 className="large_input"
                 type="text"
                 placeholder="Select Title"
-                value={this.props.choosenMovie.cover}
+                value={props.choosenMovie.cover}
               />
           
               <label htmlFor="movie_rating">RATING</label>
@@ -47,13 +47,14 @@ const EditMovie = props => {
                 className="small_input"
                 type="text"
                 placeholder="Select Title"
-                value={this.props.choosenMovie.rating}
+                value={props.choosenMovie.rating}
               />
             </fieldset>
 
             <fieldset>
               <label htmlFor="movie_genre">GENRE</label>
               <select
+                defaultValue={props.choosenMovie.genre}
                 className="large_input"
                 name="movie_genre"
                 id="movie_genre"
@@ -70,7 +71,7 @@ const EditMovie = props => {
                 className="small_input"
                 type="text"
                 placeholder="Select Title"
-                value={this.props.choosenMovie.runtime}
+                value={props.choosenMovie.runtime}
               />
             </fieldset>
             <fieldset>
@@ -78,7 +79,7 @@ const EditMovie = props => {
               <textarea
                 id="movie_overview"
                 placeholder="Movie description"
-                value={this.props.choosenMovie.description}
+                value={props.choosenMovie.description}
               ></textarea>
             </fieldset>
 
@@ -86,7 +87,7 @@ const EditMovie = props => {
             <button className="reset_btn">RESET</button>
         
           </form>
-          <button className="close_btn" onClick={this.toggleEditMovieModal}>&times;</button>
+          <button className="close_btn" onClick={toggleEditMovieModal}>&times;</button>
         </aside>
       </>
     );

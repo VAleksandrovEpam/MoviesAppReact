@@ -1,11 +1,11 @@
 import './Navbar.css';
 
-function Navbar({genres}) {
+const Navbar = props => {
     return (
         <>
         <nav>
             <ul className="navbar_links">
-               {genres.map((genre, index) => (
+               {props.genres.map((genre, index) => (
                    <li key={index}>{genre}</li>
                ))}
             </ul>
