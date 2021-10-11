@@ -9,3 +9,8 @@
 .movie_list_container {
     display: flex;
 }
+.loadMovies {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}

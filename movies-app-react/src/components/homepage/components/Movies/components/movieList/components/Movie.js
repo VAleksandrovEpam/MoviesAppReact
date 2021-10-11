@@ -18,9 +18,9 @@ function Movie(props) {
           >
             EDIT MOVIE
           </button> */}
-          <button onClick={props.toggleDeleteMovieModal} className="delete_btn">
+          {/* <button onClick={props.toggleDeleteMovieModal} className="delete_btn">
             DELETE MOVIE
-          </button>
+          </button> */}
         </section>
         <p className="title">{props.title}</p>
         <div className="year">{props.year}</div>

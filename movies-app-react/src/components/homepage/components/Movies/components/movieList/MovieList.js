@@ -2,8 +2,10 @@ import "./MovieList.css";
 import Movie from "./components/Movie";
 
 const MovieList = (props) => {
-  return (
-    <>
+  let content = <p className="loadMovies">Loading Movies....</p>
+
+  if(props.movies && props.movies.length > 0) {
+    content = ( <>
       <h5 className="movies_count">
         <span className="counter">{props.movies.length}</span> movies found
       </h5>
@@ -24,7 +26,10 @@ const MovieList = (props) => {
           ></Movie>
         ))}
       </main>
-    </>
+    </>)
+  }
+  return (
+   content
   );
 };
 
