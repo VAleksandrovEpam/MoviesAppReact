@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllMovies } from '../../redux';
 
 export const useHttp = (url, dependencies) => {
-  const [movies, setFetchedData] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(url)
@@ -12,13 +14,10 @@ export const useHttp = (url, dependencies) => {
         return response.json();
       })
       .then(data => {
-        console.log(data);
-        setFetchedData(data.data);
+        dispatch(getAllMovies(data.data))
       })  
       .catch(err => {
         console.log(err)
       })
   }, dependencies);
-
-  return [movies];
 };
