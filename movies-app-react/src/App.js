@@ -11,7 +11,7 @@ import { useHttp } from './components/hooks/http';
 
 const App = (props) => {
 
-  const [movies] = useHttp('FakeURL', []);
+  const [movies] = useHttp('http://localhost:4000/movies', []);
   const [showingAddMovieModal, toogleAddModal] = useState(false);
   const [showingEditMovieModal, toogleEditModal] = useState(false);
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);

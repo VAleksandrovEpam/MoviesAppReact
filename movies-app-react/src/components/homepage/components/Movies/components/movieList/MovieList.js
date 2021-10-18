@@ -13,13 +13,13 @@ const MovieList = (props) => {
         {props.movies.map((movie, index) => (
           <Movie
             key={index}
-            cover={movie.cover}
+            cover={movie.poster_path}
             title={movie.title}
-            genre={movie.genre}
-            year={movie.year}
-            rating={movie.rating}
+            genres={movie.genres}
+            year={movie.release_date}
+            rating={movie.vote_average}
             runtime={movie.runtime}
-            description={movie.description}
+            description={movie.overview}
             toggleEditMovieModal={props.toggleEditMovieModal}
             toggleDeleteMovieModal={props.toggleDeleteMovieModal}
             selectedMovie={props.selectedMovie}

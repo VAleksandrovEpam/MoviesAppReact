@@ -36,7 +36,7 @@ function HomeHeader(props) {
         </h4>
         <img
           className="image_details"
-          src={`./${props.choosenMovie.cover}.png`}
+          src={props.choosenMovie.cover}
           alt="cover"
         ></img>
         <div className="title_rating">

@@ -9,7 +9,7 @@ function Movie(props) {
           <img
             onClick={() => props.selectedMovie(props)}
             className="background_image"
-            src={`./${props.cover}.png`}
+            src={props.cover}
             alt="Cover"
           />
           {/* <button
@@ -24,7 +24,9 @@ function Movie(props) {
         </section>
         <p className="title">{props.title}</p>
         <div className="year">{props.year}</div>
-        <p className="genre">{props.genre}</p>
+        {props.genres.map((genre, index) => (
+          <span key={index} className="genre">{genre}</span>
+        ))}
       </section>
     </>
   );
