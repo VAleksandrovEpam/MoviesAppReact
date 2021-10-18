@@ -8,10 +8,17 @@ import AddMovie from "./components/homepage/components/Movies/components/addMovi
 import DeleteMovie from "./components/homepage/components/Movies/components/deleteMovie/DeleteMovie";
 import EditMovie from "./components/homepage/components/Movies/components/editMovie/EditMovie";
 import { useHttp } from './components/hooks/http';
+import { useSelector, useDispatch } from 'react-redux';
 
 const App = (props) => {
-
-  const [movies] = useHttp('FakeURL', []);
+  let url = 'http://localhost:4000/movies';
+  const movies = useSelector((state) => state.movies);
+  console.log(movies);
+  const sortBy = useSelector((state) => state.sortBy);
+  if(sortBy) {
+    url = `http://localhost:4000/movies?sortBy=${sortBy}`;
+  }
+  useHttp(url, [sortBy]);
   const [showingAddMovieModal, toogleAddModal] = useState(false);
   const [showingEditMovieModal, toogleEditModal] = useState(false);
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);
