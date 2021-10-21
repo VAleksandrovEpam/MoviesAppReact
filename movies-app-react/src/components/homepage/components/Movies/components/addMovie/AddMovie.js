@@ -4,7 +4,6 @@ import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
 
 const AddMovie = (props) => {
-
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -16,7 +15,14 @@ const AddMovie = (props) => {
       overview: ''
     },
    onSubmit(values) {
-     console.log(values)
+      const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+      };
+     fetch('http://localhost:4000/movies', requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data))
    }
   })
 
