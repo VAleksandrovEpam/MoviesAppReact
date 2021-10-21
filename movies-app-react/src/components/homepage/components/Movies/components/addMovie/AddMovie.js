@@ -1,15 +1,31 @@
 import React from "react";
-import { userFormik } from "formik";
+import { useFormik } from 'formik';
 import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
 
 const AddMovie = (props) => {
 
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      release_date: '',
+      poster_path: '',
+      vote_average: '',
+      genres: '',
+      runtime: '',
+      overview: ''
+    },
+   onSubmit(values) {
+     console.log(values)
+   }
+  })
+
   return (
     <>
       <aside className="addMovieModal">
         <h1 className="modal_title">ADD MOVIE</h1>
-        <form>
+        
+        <form onSubmit={formik.handleSubmit}>
           <fieldset>
             <label htmlFor="movie_title">TITLE</label>
             <input
@@ -17,6 +33,8 @@ const AddMovie = (props) => {
               className="large_input"
               type="text"
               placeholder="Select Title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
             />
             <label htmlFor="movie_date">RELEASE DATE</label>
             <input
@@ -24,6 +42,8 @@ const AddMovie = (props) => {
               className="small_input"
               type="date"
               placeholder="Select Date"
+              onChange={formik.handleChange}
+              value={formik.values.release_date}
             />
           </fieldset>
 
@@ -34,6 +54,8 @@ const AddMovie = (props) => {
               className="large_input"
               type="text"
               placeholder="Select Title"
+              onChange={formik.handleChange}
+              value={formik.values.poster_path}
             />
 
             <label htmlFor="movie_rating">REATING</label>
@@ -42,6 +64,8 @@ const AddMovie = (props) => {
               className="small_input"
               type="text"
               placeholder="Select Title"
+              onChange={formik.handleChange}
+              value={formik.values.vote_average}
             />
           </fieldset>
 
@@ -52,6 +76,8 @@ const AddMovie = (props) => {
               name="movie_genre"
               id="movie_genre"
               placeholder="Select Genre"
+              onChange={formik.handleChange}
+              value={formik.values.genres}
             >
               <option value="date">Horror</option>
               <option value="titlte">Action</option>
@@ -64,6 +90,8 @@ const AddMovie = (props) => {
               className="small_input"
               type="text"
               placeholder="Select Title"
+              onChange={formik.handleChange}
+              value={formik.values.runtime}
             />
           </fieldset>
           <fieldset>
@@ -71,10 +99,12 @@ const AddMovie = (props) => {
             <textarea
               id="movie_overview"
               placeholder="Movie description"
+              onChange={formik.handleChange}
+              value={formik.values.overview}
             ></textarea>
           </fieldset>
 
-          <button className="submit_btn">SUBMIT</button>
+          <button type="submit" className="submit_btn">SUBMIT</button>
           <button className="reset_btn">RESET</button>
         </form>
         <button className="close_btn" onClick={props.toggleAddMovieModal}>
