@@ -2,19 +2,39 @@ import React from "react";
 import { useFormik } from 'formik';
 import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
+import { addMovie } from '../../../../../../redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+
+// budget: 150000000
+// genres: (4) ['Animation', 'Adventure', 'Family', 'Comedy']
+// id: 269149
+// overview: "Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia's police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery."
+// poster_path: "https://image.tmdb.org/t/p/w500/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg"
+// release_date: "2016-02-11"
+// revenue: 1023784195
+// runtime: 108
+// tagline: "Welcome to the urban jungle."
+// title: "Zootopia"
+// vote_average: 7.7
+// vote_count: 6795
+
 
 const AddMovie = (props) => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      title: '',
-      release_date: '',
-      poster_path: '',
-      vote_average: '',
-      genres: '',
-      runtime: '',
-      overview: ''
+      title: "",
+      release_date: "",
+      poster_path: "",
+      vote_average: 0,
+      genres: [],
+      runtime: "",
+      overview: ""
     },
+
    onSubmit(values) {
+     console.log(values);
       const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -22,7 +42,10 @@ const AddMovie = (props) => {
       };
      fetch('http://localhost:4000/movies', requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+        // dispatch(addMovie)
+      })
    }
   })
 
@@ -33,80 +56,92 @@ const AddMovie = (props) => {
         
         <form onSubmit={formik.handleSubmit}>
           <fieldset>
-            <label htmlFor="movie_title">TITLE</label>
+            <label htmlFor="title">TITLE</label>
             <input
-              id="movie_title"
+              id="title"
               className="large_input"
+              name="title"
               type="text"
-              placeholder="Select Title"
               onChange={formik.handleChange}
-              value={formik.values.title}
+              defaultValue={formik.initialValues.title}
             />
-            <label htmlFor="movie_date">RELEASE DATE</label>
+            <label htmlFor="release_date">RELEASE DATE</label>
             <input
-              id="movie_date"
+              id="release_date"
               className="small_input"
               type="date"
+              name="release_date"
               placeholder="Select Date"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.release_date}
+              defaultValue={formik.initialValues.release_date}
             />
           </fieldset>
 
           <fieldset>
-            <label htmlFor="movie_url">MOVIE URL</label>
+            <label htmlFor="poster_path">MOVIE URL</label>
             <input
-              id="movie_url"
+              id="poster_path"
               className="large_input"
               type="text"
+              name="poster_path"
               placeholder="Select Title"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.poster_path}
+              defaultValue={formik.initialValues.poster_path}
             />
 
-            <label htmlFor="movie_rating">REATING</label>
+            <label htmlFor="vote_average">RATING</label>
             <input
-              id="movie_rating"
+              id="vote_average"
               className="small_input"
-              type="text"
+              type="number"
+              name="vote_average"
               placeholder="Select Title"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.vote_average}
+              defaultValue={formik.initialValues.vote_average}
             />
           </fieldset>
 
           <fieldset>
-            <label htmlFor="movie_genre">GENRE</label>
+            <label htmlFor="genres">GENRE</label>
             <select
               className="large_input"
-              name="movie_genre"
-              id="movie_genre"
+              name="genres"
+              id="genres"
+              multiple={true}
               placeholder="Select Genre"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.genres}
+              defaultValue={formik.initialValues.genres}
             >
-              <option value="date">Horror</option>
-              <option value="titlte">Action</option>
-              <option value="genre">Drama</option>
+              <option value={['horror']}>Horror</option>
+              <option value={['action']}>Action</option>
+              <option value={['drama']}>Drama</option>
             </select>
 
-            <label htmlFor="movie_runtime">RUNTIME</label>
+            <label htmlFor="runtime">RUNTIME</label>
             <input
-              id="movie_runtime"
+              id="runtime"
               className="small_input"
-              type="text"
+              type="number"
+              name="runtime"
               placeholder="Select Title"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.runtime}
+              defaultValue={formik.initialValues.runtime}
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="movie_overview">OVERVIEW</label>
+            <label htmlFor="overview">OVERVIEW</label>
             <textarea
-              id="movie_overview"
+              id="overview"
+              name="overview"
               placeholder="Movie description"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.overview}
+              defaultValue={formik.initialValues.overview}
             ></textarea>
           </fieldset>
 

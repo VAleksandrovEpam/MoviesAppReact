@@ -23,6 +23,11 @@ function reducer(state, action) {
         ...state,
         sortBy: action.payload,
       };
+      case "ADD_MOVIE":
+        return {
+          ...state,
+          movies: [...state.movies, action.payload],
+        };
     default:
       return state;
   }
@@ -31,6 +36,11 @@ function reducer(state, action) {
 export const getAllMovies = (movies) => ({
   type: "GET_ALL_MOVIES",
   payload: movies,
+});
+
+export const addMovie = (movie) => ({
+  type: "ADD_MOVIE",
+  payload: movie,
 });
 
 export const getMovieBy = (sortBy) => ({

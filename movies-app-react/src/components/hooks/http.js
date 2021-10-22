@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllMovies } from '../../redux';
 
-export const useHttp = (url, dependencies,  body = null) => {
+export const useHttp = (url, dependencies) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,5 +19,25 @@ export const useHttp = (url, dependencies,  body = null) => {
       .catch(err => {
         console.log(err)
       })
+  }, dependencies);
+};
+
+export const useAddMovie = (url, dependencies,  body) => {
+  const dispatch = useDispatch();
+  console.log('add movie body ', body)
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+      };
+    if(body) {
+      fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        dispatch(getAllMovies(data.data))
+      })
+    }
   }, dependencies);
 };
