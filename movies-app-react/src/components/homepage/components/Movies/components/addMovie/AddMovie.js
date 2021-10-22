@@ -44,7 +44,7 @@ const AddMovie = (props) => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        // dispatch(addMovie)
+        dispatch(addMovie(data))
       })
    }
   })
