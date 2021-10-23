@@ -2,7 +2,8 @@ import { createStore } from "redux";
 
 const initialState = {
   movies: [],
-  sortBy: ''
+  sortBy: "",
+  movieId: null,
 };
 
 export const store = createStore(
@@ -23,11 +24,28 @@ function reducer(state, action) {
         ...state,
         sortBy: action.payload,
       };
-      case "ADD_MOVIE":
-        return {
-          ...state,
-          movies: [...state.movies, action.payload],
-        };
+    case "ADD_MOVIE":
+      return {
+        ...state,
+        movies: [...state.movies, action.payload],
+      };
+    case "EDIT_MOVIE":
+      return {
+        ...state,
+        movies: [...state.movies, action.payload],
+      };
+    case "DELETE_MOVIE":
+      return {
+        ...state,
+        movies: [
+          ...state.movies.filter((movie) => movie.id !== action.movieId),
+        ],
+      };
+    case "SET_MOVIE_ID":
+      return {
+        ...state,
+        movieId: action.payload,
+      };
     default:
       return state;
   }
@@ -46,4 +64,19 @@ export const addMovie = (movie) => ({
 export const getMovieBy = (sortBy) => ({
   type: "GET_MOVIES_BY",
   payload: sortBy,
+});
+
+export const editMovie = (movie) => ({
+  type: "EDIT_MOVIE",
+  payload: movie,
+});
+
+export const setMovieId = (movieId) => ({
+  type: "SET_MOVIE_ID",
+  payload: movieId,
+});
+
+export const deleteMovie = (movieId) => ({
+  type: "DELETE_MOVIE",
+  payload: movieId,
 });

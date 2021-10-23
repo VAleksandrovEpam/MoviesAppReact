@@ -55,9 +55,21 @@ top: 6rem;
 .edit_btn, .delete_btn {
     width: 12rem;
     height: 1.5rem;
-    background: transparent;
-    color: #f65261;
+    background: #f65261;
+    color: white;
     border: 1px solid #f65261;
     margin: 0.2rem 0rem;
     cursor: pointer;
+}
+
+.edit_btn {
+  position: absolute;
+  bottom: 8rem;
+  left: 0;
+}
+
+.delete_btn {
+  position: absolute;
+  bottom: 6rem;
+  left: 0;
 }
