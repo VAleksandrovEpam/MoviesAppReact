@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from 'react-redux';
 const App = (props) => {
   let url = 'http://localhost:4000/movies';
   const movies = useSelector((state) => state.movies);
-  console.log(movies);
   const sortBy = useSelector((state) => state.sortBy);
   if(sortBy) {
     url = `http://localhost:4000/movies?sortBy=${sortBy}`;

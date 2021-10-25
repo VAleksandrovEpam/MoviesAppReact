@@ -1,5 +1,5 @@
 import "./Movie.css";
-import { setMovieId } from '../../../../../../../redux';
+import { setMovieId, setMovie } from '../../../../../../../redux';
 import { useDispatch } from 'react-redux'
 
 function Movie(props) {
@@ -8,13 +8,15 @@ function Movie(props) {
     dispatch(setMovieId(props.id))
     props.toggleDeleteMovieModal();
   }
+  const setCurrentMovie = () => {
+    dispatch(setMovie(props.choosenMovie))
+    props.toggleEditMovieModal();
+  }
   let showMenu = true;
   let buttonContainer = (
     <>
       <button
-        onClick={
-          (() => props.selectedMovie(props), props.toggleDeleteMovieModal)
-        }
+        onClick={setCurrentMovie}
         className="edit_btn"
       >
         EDIT MOVIE
@@ -32,7 +34,7 @@ function Movie(props) {
         <section className="container_img">
           <div onClick={() => showMenu = !showMenu} className="dots"></div>
           <img
-            onClick={() => props.selectedMovie(props)}
+            onClick={() => dispatch(setMovie(props.choosenMovie))}
             className="background_image"
             src={props.cover}
             alt="Cover"

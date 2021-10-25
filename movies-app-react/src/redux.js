@@ -4,6 +4,7 @@ const initialState = {
   movies: [],
   sortBy: "",
   movieId: null,
+  selectedMovie: null,
 };
 
 export const store = createStore(
@@ -32,7 +33,7 @@ function reducer(state, action) {
     case "EDIT_MOVIE":
       return {
         ...state,
-        movies: [...state.movies, action.payload],
+        movies: state.movies.map((movie) => movie.id === action.payload.id ? action.payload : movie)
       };
     case "DELETE_MOVIE":
       return {
@@ -43,6 +44,11 @@ function reducer(state, action) {
       return {
         ...state,
         movieId: action.payload,
+      };
+    case "SET_MOVIE":
+      return {
+        ...state,
+        selectedMovie: action.payload,
       };
     default:
       return state;
@@ -72,6 +78,11 @@ export const editMovie = (movie) => ({
 export const setMovieId = (movieId) => ({
   type: "SET_MOVIE_ID",
   payload: movieId,
+});
+
+export const setMovie = (movie) => ({
+  type: "SET_MOVIE",
+  payload: movie,
 });
 
 export const deleteMovie = (movieId) => ({

@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
 import { addMovie } from '../../../../../../redux';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { validationSchema } from './validation'
 
 const AddMovie = (props) => {
