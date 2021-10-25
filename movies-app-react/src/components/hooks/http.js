@@ -21,3 +21,21 @@ export const useHttp = (url, dependencies) => {
       })
   }, dependencies);
 };
+
+export const useAddMovie = (url, dependencies,  body) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+      };
+    if(body) {
+      fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        dispatch(getAllMovies(data.data))
+      })
+    }
+  }, dependencies);
+};

@@ -13,6 +13,8 @@ const MovieList = (props) => {
         {props.movies.map((movie, index) => (
           <Movie
             key={index}
+            choosenMovie = {movie}
+            id={movie.id}
             cover={movie.poster_path}
             title={movie.title}
             genres={movie.genres}

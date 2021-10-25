@@ -8,6 +8,7 @@
 }
 .movie_list_container {
     display: flex;
+    flex-wrap: wrap;
 }
 .loadMovies {
     color: white;
