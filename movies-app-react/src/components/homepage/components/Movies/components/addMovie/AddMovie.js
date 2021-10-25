@@ -4,7 +4,7 @@ import "../../../../../../styles/styles.css";
 import "../AddEditMovie.css";
 import { addMovie } from '../../../../../../redux';
 import { useDispatch } from 'react-redux';
-// import { validationSchema } from './validation'
+import validationSchema from '../validation';
 
 const AddMovie = (props) => {
   const dispatch = useDispatch();
@@ -13,12 +13,12 @@ const AddMovie = (props) => {
       title: "",
       release_date: "",
       poster_path: "",
-      vote_average: 0,
+      vote_average: "",
       genres: [],
       runtime: "",
       overview: ""
     },
-
+    validationSchema,
    onSubmit(values) {
      console.log(values);
       const requestOptions = {
@@ -32,6 +32,9 @@ const AddMovie = (props) => {
         console.log(data);
         dispatch(addMovie(data))
       })
+   },
+   validator() {
+     return {}
    }
   })
 
@@ -42,7 +45,9 @@ const AddMovie = (props) => {
         
         <form onSubmit={formik.handleSubmit}>
           <fieldset>
-            <label htmlFor="title">TITLE</label>
+            <label htmlFor="title">TITLE {formik.errors.title && formik.touched.title && (
+            <span className="error">{formik.errors.title}</span>
+          )}</label>
             <input
               id="title"
               className="large_input"
@@ -51,7 +56,9 @@ const AddMovie = (props) => {
               onChange={formik.handleChange}
               defaultValue={formik.initialValues.title}
             />
-            <label htmlFor="release_date">RELEASE DATE</label>
+            <label htmlFor="release_date">RELEASE DATE {formik.errors.release_date && formik.touched.release_date && (
+            <span className="error">{formik.errors.release_date}</span>
+          )}</label>
             <input
               id="release_date"
               className="small_input"
@@ -65,7 +72,9 @@ const AddMovie = (props) => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="poster_path">MOVIE URL</label>
+            <label htmlFor="poster_path">MOVIE URL {formik.errors.poster_path && formik.touched.poster_path && (
+            <span className="error">{formik.errors.poster_path}</span>
+          )}</label>
             <input
               id="poster_path"
               className="large_input"
@@ -77,7 +86,9 @@ const AddMovie = (props) => {
               defaultValue={formik.initialValues.poster_path}
             />
 
-            <label htmlFor="vote_average">RATING</label>
+            <label htmlFor="vote_average">RATING {formik.errors.vote_average && formik.touched.vote_average && (
+            <span className="error">{formik.errors.vote_average}</span>
+          )}</label>
             <input
               id="vote_average"
               className="small_input"
@@ -91,7 +102,9 @@ const AddMovie = (props) => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="genres">GENRE</label>
+            <label htmlFor="genres">GENRE {formik.errors.genres && formik.touched.genres && (
+            <span className="error">{formik.errors.genres}</span>
+          )}</label>
             <select
               className="large_input"
               name="genres"
@@ -107,7 +120,9 @@ const AddMovie = (props) => {
               <option value={['drama']}>Drama</option>
             </select>
 
-            <label htmlFor="runtime">RUNTIME</label>
+            <label htmlFor="runtime">RUNTIME {formik.errors.runtime && formik.touched.runtime && (
+            <span className="error">{formik.errors.runtime}</span>
+          )}</label>
             <input
               id="runtime"
               className="small_input"
@@ -120,7 +135,9 @@ const AddMovie = (props) => {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="overview">OVERVIEW</label>
+            <label htmlFor="overview">OVERVIEW {formik.errors.overview && formik.touched.overview && (
+            <span className="error">{formik.errors.overview}</span>
+          )}</label>
             <textarea
               id="overview"
               name="overview"

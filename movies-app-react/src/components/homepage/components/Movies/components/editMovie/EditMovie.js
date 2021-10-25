@@ -4,11 +4,11 @@ import "../AddEditMovie.css";
 import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import { editMovie } from '../../../../../../redux';
+import validationSchema from '../validation';
 
 const EditMovie = (props) => {
   const dispatch = useDispatch();
   const choosenMovie = useSelector((state) => state.selectedMovie);
-  console.log(choosenMovie);
   const toggleEditMovieModal = (e) => {
     props.toggleEditMovieModal();
   };
@@ -23,7 +23,7 @@ const EditMovie = (props) => {
       runtime: choosenMovie.runtime,
       overview: choosenMovie.overview,
     },
-
+    validationSchema,
     onSubmit(values) {
       values.budget = choosenMovie.budget;
       values.vote_count = choosenMovie.vote_count;
@@ -52,8 +52,10 @@ const EditMovie = (props) => {
         <h1 className="modal_title">ADD MOVIE</h1>
 
         <form onSubmit={formik.handleSubmit}>
-          <fieldset>
-            <label htmlFor="title">TITLE</label>
+        <fieldset>
+            <label htmlFor="title">TITLE {formik.errors.title && formik.touched.title && (
+            <span className="error">{formik.errors.title}</span>
+          )}</label>
             <input
               id="title"
               className="large_input"
@@ -62,7 +64,9 @@ const EditMovie = (props) => {
               onChange={formik.handleChange}
               defaultValue={formik.initialValues.title}
             />
-            <label htmlFor="release_date">RELEASE DATE</label>
+            <label htmlFor="release_date">RELEASE DATE {formik.errors.release_date && formik.touched.release_date && (
+            <span className="error">{formik.errors.release_date}</span>
+          )}</label>
             <input
               id="release_date"
               className="small_input"
@@ -76,7 +80,9 @@ const EditMovie = (props) => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="poster_path">MOVIE URL</label>
+            <label htmlFor="poster_path">MOVIE URL {formik.errors.poster_path && formik.touched.poster_path && (
+            <span className="error">{formik.errors.poster_path}</span>
+          )}</label>
             <input
               id="poster_path"
               className="large_input"
@@ -88,7 +94,9 @@ const EditMovie = (props) => {
               defaultValue={formik.initialValues.poster_path}
             />
 
-            <label htmlFor="vote_average">RATING</label>
+            <label htmlFor="vote_average">RATING {formik.errors.vote_average && formik.touched.vote_average && (
+            <span className="error">{formik.errors.vote_average}</span>
+          )}</label>
             <input
               id="vote_average"
               className="small_input"
@@ -102,7 +110,9 @@ const EditMovie = (props) => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="genres">GENRE</label>
+            <label htmlFor="genres">GENRE {formik.errors.genres && formik.touched.genres && (
+            <span className="error">{formik.errors.genres}</span>
+          )}</label>
             <select
               className="large_input"
               name="genres"
@@ -113,12 +123,14 @@ const EditMovie = (props) => {
               onChange={formik.handleChange}
               defaultValue={formik.initialValues.genres}
             >
-              <option value={["horror"]}>Horror</option>
-              <option value={["action"]}>Action</option>
-              <option value={["drama"]}>Drama</option>
+              <option value={['horror']}>Horror</option>
+              <option value={['action']}>Action</option>
+              <option value={['drama']}>Drama</option>
             </select>
 
-            <label htmlFor="runtime">RUNTIME</label>
+            <label htmlFor="runtime">RUNTIME {formik.errors.runtime && formik.touched.runtime && (
+            <span className="error">{formik.errors.runtime}</span>
+          )}</label>
             <input
               id="runtime"
               className="small_input"
@@ -131,7 +143,9 @@ const EditMovie = (props) => {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="overview">OVERVIEW</label>
+            <label htmlFor="overview">OVERVIEW {formik.errors.overview && formik.touched.overview && (
+            <span className="error">{formik.errors.overview}</span>
+          )}</label>
             <textarea
               id="overview"
               name="overview"
@@ -145,7 +159,7 @@ const EditMovie = (props) => {
           <button type="submit" className="submit_btn">
             SUBMIT
           </button>
-          <button className="reset_btn">RESET</button>
+          <button className="reset_btn" onClick={toggleEditMovieModal}>RESET</button>
         </form>
         <button className="close_btn" onClick={toggleEditMovieModal}>
           &times;
