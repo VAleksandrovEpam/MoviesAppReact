@@ -1,9 +1,10 @@
 import "./Movie.css";
-import { setMovieId, setMovie } from '../../../../../../../redux';
-import { useDispatch } from 'react-redux'
+import { setMovieId, setMovie, showMenu } from '../../../../../../../redux';
+import { useDispatch, useSelector } from 'react-redux'
 
 function Movie(props) {
   const dispatch = useDispatch();
+  let isShowMenu = useSelector((state) => state.showMenu);
   const setId = () => {
     dispatch(setMovieId(props.id))
     props.toggleDeleteMovieModal();
@@ -12,7 +13,9 @@ function Movie(props) {
     dispatch(setMovie(props.choosenMovie))
     props.toggleEditMovieModal();
   }
-  let showMenu = true;
+  const toogleMenu = () => {
+    dispatch(showMenu(!isShowMenu))
+  }
   let buttonContainer = (
     <>
       <button
@@ -32,14 +35,14 @@ function Movie(props) {
     <>
       <section className="movie_section">
         <section className="container_img">
-          <div onClick={() => showMenu = !showMenu} className="dots"></div>
+          <div onClick={toogleMenu} className="dots"></div>
           <img
             onClick={() => dispatch(setMovie(props.choosenMovie))}
             className="background_image"
             src={props.cover}
             alt="Cover"
           />
-          {showMenu ? buttonContainer : <></>}
+          {isShowMenu ? buttonContainer : <></>}
         </section>
         <p className="title">{props.title}</p>
         <div className="year">{props.year}</div>

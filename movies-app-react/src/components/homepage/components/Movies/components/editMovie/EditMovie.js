@@ -30,7 +30,7 @@ const EditMovie = (props) => {
       values.revenue = choosenMovie.revenue;
       values.tagline = choosenMovie.tagline;
       values.id = choosenMovie.id;
-      console.log(values);
+      
         const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -39,7 +39,6 @@ const EditMovie = (props) => {
        fetch('http://localhost:4000/movies', requestOptions)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           dispatch(editMovie(data));
           toggleEditMovieModal();
         })

@@ -20,7 +20,6 @@ const AddMovie = (props) => {
     },
     validationSchema,
    onSubmit(values) {
-     console.log(values);
       const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -29,7 +28,6 @@ const AddMovie = (props) => {
      fetch('http://localhost:4000/movies', requestOptions)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         dispatch(addMovie(data))
       })
    },

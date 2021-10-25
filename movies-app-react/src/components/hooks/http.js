@@ -24,7 +24,6 @@ export const useHttp = (url, dependencies) => {
 
 export const useAddMovie = (url, dependencies,  body) => {
   const dispatch = useDispatch();
-  console.log('add movie body ', body)
   useEffect(() => {
     const requestOptions = {
       method: 'POST',
@@ -35,7 +34,6 @@ export const useAddMovie = (url, dependencies,  body) => {
       fetch(url, requestOptions)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         dispatch(getAllMovies(data.data))
       })
     }

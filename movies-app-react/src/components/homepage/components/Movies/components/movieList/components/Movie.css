@@ -5,9 +5,9 @@
 }
 
 .container_img {
-    position: relative;
-    width: 12rem;
-    height: 18rem;
+  position: relative;
+  width: 12rem;
+  height: 18rem;
 }
 
 .background_image {
@@ -36,9 +36,10 @@
   font-size: 0.5rem;
 }
 .dots {
-position: absolute;
-right: 0.5rem;
-top: 6rem;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 6rem;
   background: #2a202d;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.196596);
   width: 1.8rem;
@@ -52,14 +53,15 @@ top: 6rem;
   font-size: 1.2rem;
 }
 
-.edit_btn, .delete_btn {
-    width: 12rem;
-    height: 1.5rem;
-    background: #f65261;
-    color: white;
-    border: 1px solid #f65261;
-    margin: 0.2rem 0rem;
-    cursor: pointer;
+.edit_btn,
+.delete_btn {
+  width: 12rem;
+  height: 1.5rem;
+  background: #f65261;
+  color: white;
+  border: 1px solid #f65261;
+  margin: 0.2rem 0rem;
+  cursor: pointer;
 }
 
 .edit_btn {
