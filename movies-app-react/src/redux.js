@@ -37,9 +37,7 @@ function reducer(state, action) {
     case "DELETE_MOVIE":
       return {
         ...state,
-        movies: [
-          ...state.movies.filter((movie) => movie.id !== action.movieId),
-        ],
+        movies: state.movies.filter((movie) => movie.id !== action.payload),
       };
     case "SET_MOVIE_ID":
       return {
