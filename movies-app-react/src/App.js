@@ -16,7 +16,7 @@ import {
   Redirect,
   Route,
   Link,
-  BrowserRouter,
+  BrowserRouter
 } from "react-router-dom";
 
 const App = (props) => {
@@ -56,12 +56,22 @@ const App = (props) => {
     setChoosenMovie(event);
   };
 
+  
+
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/">
-            <HomeHeader selectedMovie = {selectedMovie} toggleAddMovieModal={addHandler} choosenMovie = {choosenMovie}></HomeHeader>
+          <Route path="/search">
+            <HomeHeader
+              selectedMovie={selectedMovie}
+              toggleAddMovieModal={addHandler}
+              choosenMovie={choosenMovie}
+            ></HomeHeader>
+          </Route>
+        </Switch>
+        {/* <Switch>
+          <Route path="/add"> */}
             <ErrorBoundary>
               <Movies
                 movies={movies}
@@ -72,8 +82,8 @@ const App = (props) => {
                 selectedMovie={selectedMovie}
               ></Movies>
             </ErrorBoundary>
-          </Route>
-        </Switch>
+          {/* </Route>
+        </Switch> */}
       </BrowserRouter>
       {/* <HomeHeader selectedMovie = {selectedMovie} toggleAddMovieModal={addHandler} choosenMovie = {choosenMovie}></HomeHeader>
       <ErrorBoundary>
@@ -89,9 +99,7 @@ const App = (props) => {
         <AddMovie toggleAddMovieModal={addHandler}></AddMovie>
       )}
       {showingDeleteMovieModal && (
-        <DeleteMovie
-          toggleDeleteMovieModal={deleteHandler}
-        ></DeleteMovie>
+        <DeleteMovie toggleDeleteMovieModal={deleteHandler}></DeleteMovie>
       )}
       {showingEditMovieModal && (
         <EditMovie
