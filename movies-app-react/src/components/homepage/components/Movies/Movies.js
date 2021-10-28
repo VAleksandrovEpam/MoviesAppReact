@@ -39,9 +39,6 @@ const Movies = (props) => {
   }
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      history.push("search");
-    }
     if (location.pathname === "/search") {
       getMoviesBySearch("http://localhost:4000/movies", "")
     }
