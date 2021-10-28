@@ -46,7 +46,7 @@ const Movies = (props) => {
       getMoviesBySearch("http://localhost:4000/movies", "")
     }
     if(searchParam) {
-      console.log(searchParam);
+      console.log(searchParam, ' make req');
       getMoviesBySearch("http://localhost:4000/movies", searchParam)
     }
   }, [location.pathname]);

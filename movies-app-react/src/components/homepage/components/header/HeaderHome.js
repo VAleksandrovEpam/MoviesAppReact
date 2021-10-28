@@ -1,12 +1,21 @@
 import "./HeaderHome.css";
 import React from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams, useLocation } from "react-router";
+import { useFormik } from "formik";
 
 const HomeHeader = (props) => {
+  const history = useHistory();
+  const location = useLocation();
+  let { searchParam } = useParams();
+  const formik = useFormik({
+    initialValues: {
+      search: searchParam || "",
+    },
+    onSubmit(values) {
+      history.push(location.pathname + '/' + values.search);
+    },
+  });
 
-  // let { postId } = useParams();
-  // console.log(postId)
-  
   return (
     <>
       <header className="container">
@@ -18,19 +27,23 @@ const HomeHeader = (props) => {
           + ADD MOVIE
         </h3>
         <h2 className="movie-title">FIND YOUR MOVIE</h2>
-        <form className="search_movies">
+        <form onSubmit={formik.handleSubmit} className="search_movies">
           <input
+            id="search"
+            name="search"
             type="text"
             className="search-input"
             placeholder="What do you want to watch?"
+            onChange={formik.handleChange}
+            defaultValue={formik.initialValues.search}
           />
-          <button type="button" className="search_btn">
+          <button type="submit" className="search_btn">
             Search
           </button>
         </form>
       </header>
     </>
   );
-}
+};
 
 export default React.memo(HomeHeader);
