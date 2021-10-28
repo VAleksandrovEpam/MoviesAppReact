@@ -54,16 +54,12 @@ const App = (props) => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/search">
+          <Route path="/search/:searchParam?">
             <HomeHeader
               selectedMovie={selectedMovie}
               toggleAddMovieModal={addHandler}
               choosenMovie={choosenMovie}
             ></HomeHeader>
-          </Route>
-        </Switch>
-        {/* <Switch>
-          <Route path="/add"> */}
             <ErrorBoundary>
               <Movies
                 genres={genres}
@@ -73,6 +69,11 @@ const App = (props) => {
                 selectedMovie={selectedMovie}
               ></Movies>
             </ErrorBoundary>
+          </Route>
+        </Switch>
+        {/* <Switch>
+        <Route path="/search/:paramSearch"> */}
+            
           {/* </Route>
         </Switch> */}
       </BrowserRouter>

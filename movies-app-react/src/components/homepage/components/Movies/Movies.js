@@ -1,7 +1,7 @@
 import Navbar from "./components/navbar/Navbar";
 import MovieList from "./components/movieList/MovieList";
 import "./Movies.css";
-import { useLocation, useHistory } from "react-router";
+import { useLocation, useHistory, useParams } from "react-router";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllMovies } from '../../../../redux';
@@ -10,6 +10,7 @@ const Movies = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  let { searchParam } = useParams();
   // let url = "http://localhost:4000/movies";
   const movies = useSelector((state) => state.movies);
   const sortBy = useSelector((state) => state.sortBy);
@@ -18,28 +19,35 @@ const Movies = (props) => {
   // }
   // useGetMovies(url, [sortBy]);
 
+  const getMoviesBySearch = (url, search) => {
+    const body = {
+      search: "",
+    };
+    fetch(`${url}?search=${search}`)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Failed to fetch.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      dispatch(getAllMovies(data.data))
+    })  
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   useEffect(() => {
     if (location.pathname === "/") {
       history.push("search");
     }
     if (location.pathname === "/search") {
-      const body = {
-        search: "",
-      };
-      console.log('get data')
-      fetch("http://localhost:4000/movies?search=")
-      .then(response => {
-        if(!response.ok) {
-          throw new Error('Failed to fetch.');
-        }
-        return response.json();
-      })
-      .then(data => {
-        dispatch(getAllMovies(data.data))
-      })  
-      .catch(err => {
-        console.log(err)
-      })
+      getMoviesBySearch("http://localhost:4000/movies", "")
+    }
+    if(searchParam) {
+      console.log(searchParam);
+      getMoviesBySearch("http://localhost:4000/movies", searchParam)
     }
   }, [location.pathname]);
 

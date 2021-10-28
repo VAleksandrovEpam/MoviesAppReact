@@ -1,8 +1,11 @@
 import "./HeaderHome.css";
 import React from "react";
-
+import { useParams } from "react-router";
 
 const HomeHeader = (props) => {
+
+  // let { postId } = useParams();
+  // console.log(postId)
   
   return (
     <>
