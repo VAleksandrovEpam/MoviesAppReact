@@ -1,12 +1,12 @@
 import './Navbar.css';
 import { getMovieBy } from '../../../../../../redux';
 import { useDispatch } from 'react-redux';
-import { useHttp } from '../../../../../hooks/http';
+import { useGetMovies } from '../../../../../hooks/http';
 
 const Navbar = props => {
     const dispatch = useDispatch();
     let url = 'http://localhost:4000/movies';
-    useHttp(url, []);
+    // useGetMovies(url, []);
     // const sortMoviesByRating = () => dispatch(getMovieByRating()) 
     const getMoviesBy = (type) => {
         if(type.target.value === 'release_date') {

@@ -8,8 +8,7 @@ import React, { useState } from "react";
 import AddMovie from "./components/homepage/components/Movies/components/addMovie/AddMovie";
 import DeleteMovie from "./components/homepage/components/Movies/components/deleteMovie/DeleteMovie";
 import EditMovie from "./components/homepage/components/Movies/components/editMovie/EditMovie";
-import { useHttp } from "./components/hooks/http";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,13 +19,6 @@ import {
 } from "react-router-dom";
 
 const App = (props) => {
-  let url = "http://localhost:4000/movies";
-  const movies = useSelector((state) => state.movies);
-  const sortBy = useSelector((state) => state.sortBy);
-  if (sortBy) {
-    url = `http://localhost:4000/movies?sortBy=${sortBy}`;
-  }
-  useHttp(url, [sortBy]);
   const [showingAddMovieModal, toogleAddModal] = useState(false);
   const [showingEditMovieModal, toogleEditModal] = useState(false);
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);
@@ -74,7 +66,6 @@ const App = (props) => {
           <Route path="/add"> */}
             <ErrorBoundary>
               <Movies
-                movies={movies}
                 genres={genres}
                 toggleAddMovieModal={addHandler}
                 toggleEditMovieModal={editHandler}

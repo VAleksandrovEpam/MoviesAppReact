@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllMovies } from '../../redux';
 
-export const useHttp = (url, dependencies) => {
+export const useGetMovies = (url, dependencies) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
