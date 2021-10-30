@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const initialState = {
   movies: [],
+  genres: [],
   sortBy: "",
   movieId: null,
   selectedMovie: null,
@@ -20,6 +21,11 @@ function reducer(state, action) {
       return {
         ...state,
         movies: action.payload,
+      };
+    case "GET_GENRES":
+      return {
+        ...state,
+        genres: action.payload,
       };
     case "GET_MOVIES_BY":
       return {
@@ -66,6 +72,11 @@ function reducer(state, action) {
 export const getAllMovies = (movies) => ({
   type: "GET_ALL_MOVIES",
   payload: movies,
+});
+
+export const getGenres = (genres) => ({
+  type: "GET_GENRES",
+  payload: genres,
 });
 
 export const addMovie = (movie) => ({

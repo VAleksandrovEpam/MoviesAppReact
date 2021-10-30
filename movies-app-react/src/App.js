@@ -24,14 +24,6 @@ const App = (props) => {
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);
   const [choosenMovie, setChoosenMovie] = useState({});
 
-  const [genres, setGenres] = useState([
-    "ALL",
-    "DOCUMENTARY",
-    "COMEDY",
-    "HORROR",
-    "CRIME",
-  ]);
-
   const editHandler = () => {
     toogleEditModal(!showingEditMovieModal);
   };
@@ -60,7 +52,6 @@ const App = (props) => {
             ></HomeHeader>
             <ErrorBoundary>
               <Movies
-                genres={genres}
                 toggleAddMovieModal={addHandler}
                 toggleEditMovieModal={editHandler}
                 toggleDeleteMovieModal={deleteHandler}
