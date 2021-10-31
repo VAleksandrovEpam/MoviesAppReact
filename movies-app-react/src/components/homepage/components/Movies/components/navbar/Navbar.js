@@ -1,16 +1,17 @@
 import "./Navbar.css";
-import { getMovieBy, getAllMovies } from "../../../../../../redux";
-import { useDispatch } from "react-redux";
+import { getMovieBy, getAllMovies, selectGenre } from "../../../../../../redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory, useParams } from "react-router";
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  let currentGenre = useSelector((state) => state.selectedGenre);
   let path = location.pathname
   let { searchParam, searchGenre } = useParams();
 
-  const filterByGenre = (e, genre) => {
+  const filterByGenre = (genre) => {
     if(location.pathname.includes('genre')) {
         let index = path.indexOf('genre');
         path = path.slice(0,index + 5);
@@ -18,6 +19,10 @@ const Navbar = (props) => {
     } else {
         history.replace({ pathname: `${location.pathname}/${searchParam ? searchParam + '/' : ''}genre/${genre}`, state:{isActive: true}});
     }
+    let url = searchParam ? `http://localhost:4000/movies?search=${searchParam}&filter=${genre}` : `http://localhost:4000/movies?filter=${genre}`
+    currentGenre = genre;
+    getMovieByGenre(url);
+    dispatch(selectGenre(genre))
   };
 
   console.log(searchParam, ' searchParam ', searchGenre, ' genre')
@@ -54,8 +59,8 @@ const Navbar = (props) => {
       <nav>
         <ul className="navbar_links">
           {props.genres.map((genre, index) => (
-            <li onClick={(event) => filterByGenre(event, genre)} key={index}>
-              {genre}
+            <li onClick={() => filterByGenre(genre)} key={index}>
+            <span className={genre === currentGenre ? "active" : ""}> {genre}</span>
             </li>
           ))}
         </ul>

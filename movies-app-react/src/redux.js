@@ -7,6 +7,7 @@ const initialState = {
   movieId: null,
   selectedMovie: null,
   showMenu: false,
+  selectedGenre: ""
 };
 
 export const store = createStore(
@@ -64,6 +65,11 @@ function reducer(state, action) {
         ...state,
         showMenu: action.payload,
       };
+    case "SELECT_GENRE":
+      return {
+        ...state,
+        selectedGenre: action.payload
+      }
     default:
       return state;
   }
@@ -113,3 +119,8 @@ export const showMenu = (isShowing) => ({
   type: "SHOW_MENU",
   payload: isShowing,
 });
+
+export const selectGenre = (genre) => ({
+  type: "SELECT_GENRE",
+  payload: genre
+})
