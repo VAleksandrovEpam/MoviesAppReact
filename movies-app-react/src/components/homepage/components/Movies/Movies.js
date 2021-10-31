@@ -11,7 +11,6 @@ const Movies = (props) => {
   const location = useLocation();
   const history = useHistory();
   let { searchParam } = useParams();
-  // let url = "http://localhost:4000/movies";
   const movies = useSelector((state) => state.movies);
   const genres = useSelector((state) => state.genres)
   const sortBy = useSelector((state) => state.sortBy);
@@ -25,10 +24,6 @@ const Movies = (props) => {
     let uniqGenres  = [...new Set(genres)];
     return uniqGenres
   }
-  // if (sortBy) {
-  //   url = `http://localhost:4000/movies?sortBy=${sortBy}`;
-  // }
-
   useEffect(() => {
     if(sortBy) {
       fetch(`http://localhost:4000/movies?sortBy=${sortBy}`)
@@ -70,13 +65,8 @@ const Movies = (props) => {
   }
 
   useEffect(() => {
-    // if (location.pathname === "/search" || searchParam === 'genre') {
-    //   getMoviesBySearch("http://localhost:4000/movies", "")
-    // }
     if(searchParam && searchParam !== 'genre') {
       getMoviesBySearch("http://localhost:4000/movies", searchParam)
-    } else { 
-      getMoviesBySearch("http://localhost:4000/movies", "")
     }
   }, [searchParam]);
 
