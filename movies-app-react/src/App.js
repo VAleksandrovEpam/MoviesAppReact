@@ -40,26 +40,30 @@ const App = (props) => {
     setChoosenMovie(event);
   };
 
+  const routes = ["/search/:searchParam?", "/search/:searchParam?/:searchGenre?"]
+
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/search/:searchParam?">
-            <HomeHeader
-              selectedMovie={selectedMovie}
-              toggleAddMovieModal={addHandler}
-              choosenMovie={choosenMovie}
-            ></HomeHeader>
-            <ErrorBoundary>
-              <Movies
-                toggleAddMovieModal={addHandler}
-                toggleEditMovieModal={editHandler}
-                toggleDeleteMovieModal={deleteHandler}
-                selectedMovie={selectedMovie}
-              ></Movies>
-            </ErrorBoundary>
-            <Footer></Footer>
-          </Route>
+          {routes.map((route, index) => (
+             <Route path={route} key={index}> 
+             <HomeHeader
+               selectedMovie={selectedMovie}
+               toggleAddMovieModal={addHandler}
+               choosenMovie={choosenMovie}
+             ></HomeHeader>
+             <ErrorBoundary>
+               <Movies
+                 toggleAddMovieModal={addHandler}
+                 toggleEditMovieModal={editHandler}
+                 toggleDeleteMovieModal={deleteHandler}
+                 selectedMovie={selectedMovie}
+               ></Movies>
+             </ErrorBoundary>
+             <Footer></Footer>
+           </Route>
+          ))}
           <Route path="/">
             <Footer></Footer>
           </Route>
