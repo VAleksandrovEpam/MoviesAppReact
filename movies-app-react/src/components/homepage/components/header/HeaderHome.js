@@ -13,11 +13,11 @@ const HomeHeader = (props) => {
       search: searchParam || "",
     },
     onSubmit(values) {
-      history.push(location.pathname + '/' + values.search);
-      // if(searchParam) {
-      //   path = path.slice(0, 7)
-      // }
-      // history.replace({pathname: `${path}/${values.search}`, state: {isActive: true}});
+      if(searchParam) {
+        path = path.slice(0, 7)
+      }
+      console.log(path)
+      history.replace({pathname: `${path}/${values.search}`, state: {isActive: true}});
     },
   });
 
