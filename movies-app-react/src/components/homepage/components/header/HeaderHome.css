@@ -25,19 +25,6 @@
   display: flex;
 }
 
-.movie_details > h6 {
-  font-family: Montserrat;
-  font-size: 1.1rem;
-  font-style: normal;
-  font-weight: 500;
-  color: #ffffff;
-  mix-blend-mode: normal;
-  opacity: 0.5;
-  position: absolute;
-  top: 6rem;
-  left: 16rem;
-}
-
 .title_rating {
   display: flex;
   position: absolute;
@@ -176,4 +163,22 @@
   top: 4.5rem;
   left: 6rem;
   z-index: 4;
+}
+
+.ratings {
+  position: absolute;
+  top: 6rem;
+  left: 16rem;
+  display: flex;
+}
+
+.movie_details > .ratings > h6 {
+  font-family: Montserrat;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  margin-right: 0.4rem;
 }

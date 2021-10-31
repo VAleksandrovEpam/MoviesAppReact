@@ -1,7 +1,10 @@
 import "./HeaderHome.css";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const MovieDetails = (props) => {
+ const movie = useSelector((state) => state.selectedMovie)
+ console.log(movie)
   return (
     <>
       <header className="container">
@@ -11,18 +14,22 @@ const MovieDetails = (props) => {
           </h4>
           <img
             className="image_details"
-            src={props.choosenMovie.cover}
+            src={movie.poster_path}
             alt="cover"
           ></img>
           <div className="title_rating">
-            <h1>{props.choosenMovie.title}</h1>
-            <h2>{props.choosenMovie.rating}</h2>
+            <h1>{movie.title}</h1>
+            <h2>{movie.vote_average}</h2>
           </div>
-          <h6>{props.choosenMovie.genre}</h6>
+          <div className="ratings">
+            {movie.genres.map((genre) => (
+              <h6>{genre}</h6>
+            ))}
+          </div>
           <div className="year_duration_wrapper">
-            <h4>{props.choosenMovie.year}</h4>
-            <h4 className="runtime">{props.choosenMovie.runtime}</h4>
-            <p>{props.choosenMovie.description}</p>
+            <h4>{movie.release_date}</h4>
+            <h4 className="runtime">{movie.runtime}</h4>
+            <p>{movie.overview}</p>
           </div>
           <img
             onClick={() => props.selectedMovie({})}

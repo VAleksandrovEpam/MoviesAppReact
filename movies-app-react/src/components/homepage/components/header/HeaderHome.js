@@ -16,7 +16,6 @@ const HomeHeader = (props) => {
       if(searchParam) {
         path = path.slice(0, 7)
       }
-      console.log(path)
       history.replace({pathname: `${path}/${values.search}`, state: {isActive: true}});
     },
   });

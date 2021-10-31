@@ -25,8 +25,6 @@ const Navbar = (props) => {
     dispatch(selectGenre(genre))
   };
 
-  console.log(searchParam, ' searchParam ', searchGenre, ' genre')
-
   const getMovieByGenre = (url) => {
     fetch(url)
     .then(response => {

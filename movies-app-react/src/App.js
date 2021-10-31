@@ -66,6 +66,21 @@ const App = (props) => {
              <Footer></Footer>
            </Route>
           {/* ))} */}
+          <Route path="/movie/:movieID">
+             <MovieDetails
+              selectedMovie={selectedMovie}
+              toggleAddMovieModal={addHandler}>
+                
+              </MovieDetails>
+             <ErrorBoundary>
+               <Movies
+                 toggleAddMovieModal={addHandler}
+                 toggleEditMovieModal={editHandler}
+                 toggleDeleteMovieModal={deleteHandler}
+                 selectedMovie={selectedMovie}
+               ></Movies>
+             </ErrorBoundary>
+          </Route>
           <Route exact path="/">
             <Footer></Footer>
           </Route>
