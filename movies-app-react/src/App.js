@@ -5,6 +5,7 @@ import Movies from "./components/homepage/components/Movies/Movies";
 import Footer from "./components/homepage/components/Footer/Footer";
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 import React, { useState } from "react";
+import ErrorPage from './components/404page/ErrorPage'
 import AddMovie from "./components/homepage/components/Movies/components/addMovie/AddMovie";
 import DeleteMovie from "./components/homepage/components/Movies/components/deleteMovie/DeleteMovie";
 import EditMovie from "./components/homepage/components/Movies/components/editMovie/EditMovie";
@@ -65,8 +66,11 @@ const App = (props) => {
              <Footer></Footer>
            </Route>
           {/* ))} */}
-          <Route path="/">
+          <Route exact path="/">
             <Footer></Footer>
+          </Route>
+          <Route path="*">
+            <ErrorPage></ErrorPage>
           </Route>
         </Switch>
       </BrowserRouter>
