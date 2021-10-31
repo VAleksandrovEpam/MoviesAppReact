@@ -28,7 +28,26 @@ const Movies = (props) => {
   // if (sortBy) {
   //   url = `http://localhost:4000/movies?sortBy=${sortBy}`;
   // }
-  // useGetMovies(url, [sortBy]);
+
+  useEffect(() => {
+    if(sortBy) {
+      fetch(`http://localhost:4000/movies?sortBy=${sortBy}`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Failed to fetch.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        history.push(`/search/${searchParam || " "}/sortBy/${sortBy}`)
+        dispatch(getGenres(setGenres(data.data)))
+        dispatch(getAllMovies(data.data))
+      })  
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [sortBy])
 
   const getMoviesBySearch = (url, search) => {
     const body = {
