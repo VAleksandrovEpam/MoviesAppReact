@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 const HomeHeader = (props) => {
   const history = useHistory();
   const location = useLocation();
+  let path = location.pathname;
   let { searchParam } = useParams();
   const formik = useFormik({
     initialValues: {
@@ -13,6 +14,10 @@ const HomeHeader = (props) => {
     },
     onSubmit(values) {
       history.push(location.pathname + '/' + values.search);
+      // if(searchParam) {
+      //   path = path.slice(0, 7)
+      // }
+      // history.replace({pathname: `${path}/${values.search}`, state: {isActive: true}});
     },
   });
 

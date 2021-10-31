@@ -46,8 +46,9 @@ const App = (props) => {
     <>
       <BrowserRouter>
         <Switch>
-          {routes.map((route, index) => (
-             <Route path={route} key={index}> 
+          {/* {routes.map((route, index) => (
+             <Route path={route} key={index}>  */}
+             <Route path="/search/:searchParam?/:searchGenre?"> 
              <HomeHeader
                selectedMovie={selectedMovie}
                toggleAddMovieModal={addHandler}
@@ -63,7 +64,7 @@ const App = (props) => {
              </ErrorBoundary>
              <Footer></Footer>
            </Route>
-          ))}
+          {/* ))} */}
           <Route path="/">
             <Footer></Footer>
           </Route>
