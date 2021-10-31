@@ -5,7 +5,6 @@ import { useEffect } from "react";
 function Footer() {
     const location = useLocation();
     const history = useHistory();
-    console.log(location.pathname)
     useEffect(() => {
         if (location.pathname === "/") {
             history.push("search");

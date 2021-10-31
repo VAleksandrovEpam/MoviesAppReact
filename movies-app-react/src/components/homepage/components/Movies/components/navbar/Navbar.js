@@ -7,27 +7,43 @@ const Navbar = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  let path = location.pathname
   let { searchParam } = useParams();
 
-  const filterByGenre = (genre) => {
-    let url =
-      `http://localhost:4000/movies?search=${searchParam}&filter=${genre}`;
-    if(!searchParam) {
-        url = `http://localhost:4000/movies?filter=${genre}`
+  const filterByGenre = (e, genre) => {
+    if(location.pathname.includes('genre')) {
+        let index = path.indexOf('genre');
+        console.log(index)
+        path = path.slice(0,index + 5);
+        console.log(path)
+        history.replace({ pathname: `${path}/${genre}`, state:{isActive: true}});
+    } else {
+        history.replace({ pathname: `${location.pathname}/genre/${genre}`, state:{isActive: true}});
+    console.log(location.pathname)
     }
-    fetch(url)
-    .then(response => {
-        if(!response.ok) {
-          throw new Error('Failed to fetch.');
-        }
-        return response.json();
-      })
-      .then(data => {
-        dispatch(getAllMovies(data.data))
-      })  
-      .catch(err => {
-        console.log(err)
-      })
+    
+
+
+
+
+    // let url =
+    //   `http://localhost:4000/movies?search=${searchParam}&filter=${genre}`;
+    // if(!searchParam) {
+    //     url = `http://localhost:4000/movies?filter=${genre}`
+    // }
+    // fetch(url)
+    // .then(response => {
+    //     if(!response.ok) {
+    //       throw new Error('Failed to fetch.');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     dispatch(getAllMovies(data.data))
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
   };
 
   const getMoviesBy = (type) => {
@@ -46,7 +62,7 @@ const Navbar = (props) => {
       <nav>
         <ul className="navbar_links">
           {props.genres.map((genre, index) => (
-            <li onClick={() => filterByGenre(genre)} key={index}>
+            <li onClick={(event) => filterByGenre(event, genre)} key={index}>
               {genre}
             </li>
           ))}
