@@ -34,7 +34,7 @@ const HomeHeader = (props) => {
         <form onSubmit={formik.handleSubmit} className="search_movies">
           <input
             id="search"
-            name="search"
+            name="9"
             type="text"
             className="search-input"
             placeholder="What do you want to watch?"

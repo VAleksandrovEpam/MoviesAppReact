@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 
-const initialState = {
+export const initialState = {
   movies: [],
   genres: [],
   sortBy: "",
@@ -16,7 +16,7 @@ export const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-function reducer(state, action) {
+export function reducer(state, action) {
   switch (action.type) {
     case "GET_ALL_MOVIES":
       return {
