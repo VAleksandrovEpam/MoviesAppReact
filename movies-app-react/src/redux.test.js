@@ -1,6 +1,6 @@
-import { reducer, initialState } from './redux';
+import { reducer, initialState,showMenu,selectGenre, setMovie, setMovieId, getAllMovies, getGenres, addMovie, getMovieBy} from './redux';
 
-describe("Reducer", () => {
+fdescribe("Reducer", () => {
     it("has a default state", () => {
         expect(reducer(initialState, {type: 'default'})).toEqual({
             movies: [],
@@ -12,10 +12,20 @@ describe("Reducer", () => {
             selectedGenre: ""
         })
     });
-    it("changes movies", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: [{name: 'movie'}]}))
-        .toEqual({
-            movies: [{name: 'movie'}],
+    it("set movie id", () => {
+        expect(reducer(initialState, setMovieId('123'))).toEqual({
+            movies: [],
+            genres: [],
+            sortBy: "",
+            movieId: '123',
+            selectedMovie: null,
+            showMenu: false,
+            selectedGenre: ""
+        })
+    });
+    it("get all movies", () => {
+        expect(reducer(initialState, getAllMovies([{name: 'test'}]))).toEqual({
+            movies: [{name: 'test'}],
             genres: [],
             sortBy: "",
             movieId: null,
@@ -25,7 +35,7 @@ describe("Reducer", () => {
         })
     });
     it("changes genres", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: ['Action']}))
+        expect(reducer(initialState, getGenres(['Action'])))
         .toEqual({
             movies: [],
             genres: ['Action'],
@@ -37,7 +47,7 @@ describe("Reducer", () => {
         })
     });
     it("changes sortBy", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: "Action"}))
+        expect(reducer(initialState, getMovieBy("Action")))
         .toEqual({
             movies: [],
             genres: [],
@@ -48,20 +58,8 @@ describe("Reducer", () => {
             selectedGenre: ""
         })
     });
-    it("changes movieId", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: 123}))
-        .toEqual({
-            movies: [],
-            genres: [],
-            sortBy: "",
-            movieId: 123,
-            selectedMovie: null,
-            showMenu: false,
-            selectedGenre: ""
-        })
-    });
     it("changes selectedMovie", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: {name: "test"}}))
+        expect(reducer(initialState, setMovie({name: "test"})))
         .toEqual({
             movies: [],
             genres: [],
@@ -71,8 +69,9 @@ describe("Reducer", () => {
             showMenu: false,
             selectedGenre: ""
         })
-    });it("changes showMenu", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: true}))
+    });
+    it("changes showMenu", () => {
+        expect(reducer(initialState, showMenu(true)))
         .toEqual({
             movies: [],
             genres: [],
@@ -82,8 +81,9 @@ describe("Reducer", () => {
             showMenu: true,
             selectedGenre: ""
         })
-    });it("changes selectedGenre", () => {
-        expect(reducer(initialState, {type: "GET_ALL_MOVIES", payload: "Action"}))
+    });
+    it("changes selectedGenre", () => {
+        expect(reducer(initialState, selectGenre("Action")))
         .toEqual({
             movies: [],
             genres: [],
@@ -92,6 +92,18 @@ describe("Reducer", () => {
             selectedMovie: null,
             showMenu: false,
             selectedGenre: "Action"
+        })
+    });
+    it("adds movie", () => {
+        expect(reducer(initialState, addMovie({name: 'addedMovie'})))
+        .toEqual({
+            movies: [{name: 'addedMovie'}],
+            genres: [],
+            sortBy: "",
+            movieId: null,
+            selectedMovie: null,
+            showMenu: false,
+            selectedGenre: ""
         })
     })
 })
