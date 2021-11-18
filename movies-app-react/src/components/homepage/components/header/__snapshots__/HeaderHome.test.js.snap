@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<footer>
+  <p
+    className="primary_color"
+  >
+    <span>
+      netflix
+    </span>
+    roulette
+  </p>
+</footer>
+`;
+
+exports[`HomeHeader Component Testing snapshot testing 1`] = `
+<footer>
+  <p
+    className="primary_color"
+  >
+    <span>
+      netflix
+    </span>
+    roulette
+  </p>
+</footer>
+`;

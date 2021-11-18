@@ -1,6 +1,6 @@
 import { reducer, initialState,showMenu,selectGenre, setMovie, setMovieId, getAllMovies, getGenres, addMovie, getMovieBy} from './redux';
 
-fdescribe("Reducer", () => {
+describe("Reducer", () => {
     it("has a default state", () => {
         expect(reducer(initialState, {type: 'default'})).toEqual({
             movies: [],

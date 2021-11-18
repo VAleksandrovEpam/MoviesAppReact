@@ -11,7 +11,7 @@ const HomeHeader = (props) => {
   const formik = useFormik({
     initialValues: {
       search: searchParam || "",
-    },
+    },  
     onSubmit(values) {
       if(searchParam) {
         path = path.slice(0, 7)

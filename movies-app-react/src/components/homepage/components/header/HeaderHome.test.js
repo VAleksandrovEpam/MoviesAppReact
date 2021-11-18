@@ -1,9 +1,21 @@
-import React from 'react';
 import renderer from 'react-test-renderer';
-
+window.React = require('react')
+import App from '../../../../App';
 import HomeHeader from './HeaderHome';
+import Footer from '../Footer/Footer';
+import { BrowserRouter as Router } from "react-router-dom";
 
-it('renders correctly when there are no items', () => {
-  const tree = renderer.create(<HomeHeader />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
+fdescribe("HomeHeader Component Testing", () => {
+  test("snapshot testing" , () => {
+    const homHeader = renderer
+    .create(
+      <App>
+        <Router>
+          <HomeHeader></HomeHeader>
+          <Footer></Footer>
+        </Router>      
+      </App>
+   ).toJSON();
+  expect(homHeader).toMatchSnapshot()
+  });
+})
