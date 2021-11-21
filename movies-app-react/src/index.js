@@ -7,12 +7,12 @@ import { Provider } from 'react-redux';
 import { store } from './redux';
 // import { useSelector, useDispatch } from 'react-redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-  <Provider store={store}>
-    <App />
-  </Provider>
-  </React.StrictMode>,
+ReactDOM.hydrate(
+  // <React.StrictMode>
+  // <Provider store={store}>
+    <App />,
+  // </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
