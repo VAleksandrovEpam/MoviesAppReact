@@ -15,7 +15,9 @@ const MovieList = (props) => {
                 runtime={movie.runtime}
                 description={movie.description}
                 toggleEditMovieModal={props.toggleEditMovieModal}
-                toggleDeleteMovieModal={props.toggleDeleteMovieModal}>
+                toggleDeleteMovieModal={props.toggleDeleteMovieModal}
+                movie={movie}
+                selectMovie={props.selectMovie}>
                 </Movie>
             ))}
             </main>

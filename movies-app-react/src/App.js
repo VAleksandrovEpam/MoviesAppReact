@@ -40,16 +40,15 @@ const App = props => {
     }
 
     const selectedMovie = event => {
-      console.log(event);
-      console.log('this is the choosen movie');
+      setChoosenMovie(event);
+      editHandler();
     }
 
-    console.log(movies, genres)
     return (
       <>
         <HomeHeader toggleAddMovieModal={addHandler}></HomeHeader>
         <ErrorBoundary>
-          <Movies movies={movies}  genres={genres} toggleEditMovieModal={editHandler} toggleDeleteMovieModal={deleteHandler} ></Movies>
+          <Movies movies={movies} selectMovie={selectedMovie}  genres={genres} toggleEditMovieModal={editHandler} toggleDeleteMovieModal={deleteHandler} ></Movies>
         </ErrorBoundary>
         {showingAddMovieModal && <AddMovie toggleAddMovieModal={addHandler}></AddMovie>}
         {showingDeleteMovieModal && <DeleteMovie toggleDeleteMovieModal={deleteHandler}></DeleteMovie>}

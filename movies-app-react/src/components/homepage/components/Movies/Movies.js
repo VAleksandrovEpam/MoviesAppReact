@@ -7,7 +7,7 @@ const Movies = (props) => {
         <>
         <main className="main_container">
             <Navbar genres={props.genres}></Navbar>
-           <MovieList toggleEditMovieModal={props.toggleEditMovieModal} toggleDeleteMovieModal={props.toggleDeleteMovieModal} movies={props.movies} ></MovieList>
+           <MovieList selectMovie={props.selectMovie} toggleEditMovieModal={props.toggleEditMovieModal} toggleDeleteMovieModal={props.toggleDeleteMovieModal} movies={props.movies} ></MovieList>
         </main>
         </>
     )
