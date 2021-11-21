@@ -15,7 +15,7 @@ const App = props => {
   const [showingDeleteMovieModal, toogleDeleteModal] = useState(false);
   const [choosenMovie, setChoosenMovie] = useState(null);
 
-  const [genres, setGenres] = ['ALL', 'DOCUMENTARY', 'COMEDY', 'HORROR', 'CRIME'];
+  const [genres, setGenres] = useState(['ALL', 'DOCUMENTARY', 'COMEDY', 'HORROR', 'CRIME']);
 
   const  [movies, setMovies] = useState([
     {cover: 'pulpFiction', title: 'Pulp Fiction', genre: 'Action & Adventure', year: '2004', rating: 7.2, runtime: "1h 47min", description: 'Great Movie'},
@@ -44,16 +44,16 @@ const App = props => {
       console.log('this is the choosen movie');
     }
 
-
+    console.log(movies, genres)
     return (
       <>
-        <HomeHeader toggleAddMovieModal={this.toggleAddMovieModal}></HomeHeader>
+        <HomeHeader toggleAddMovieModal={addHandler}></HomeHeader>
         <ErrorBoundary>
-          <Movies movies={movies}  genres={genres} toggleEditMovieModal={this.toggleEditMovieModal} toggleDeleteMovieModal={this.toggleDeleteMovieModal} ></Movies>
+          <Movies movies={movies}  genres={genres} toggleEditMovieModal={editHandler} toggleDeleteMovieModal={deleteHandler} ></Movies>
         </ErrorBoundary>
-        {this.state.showingAddMovieModal && <AddMovie toggleAddMovieModal={this.toggleAddMovieModal}></AddMovie>}
-        {this.state.showingDeleteMovieModal && <DeleteMovie toggleDeleteMovieModal={this.toggleDeleteMovieModal}></DeleteMovie>}
-        {this.state.showingEditMovieModal && <EditMovie choosenMovie={choosenMovie} toggleEditMovieModal={this.toggleEditMovieModal}></EditMovie>}
+        {showingAddMovieModal && <AddMovie toggleAddMovieModal={addHandler}></AddMovie>}
+        {showingDeleteMovieModal && <DeleteMovie toggleDeleteMovieModal={deleteHandler}></DeleteMovie>}
+        {showingEditMovieModal && <EditMovie choosenMovie={choosenMovie} toggleEditMovieModal={editHandler}></EditMovie>}
         <Footer></Footer>
       </>
     );
